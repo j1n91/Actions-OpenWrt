@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: Build OpenWrt
+name: 小米R3G1907
 
 on:
   #repository_dispatch:
@@ -17,8 +17,8 @@ on:
       #- master
     #paths:
       #- '.config'
-#  schedule:
-#    - cron: 0 8 * * 5
+  schedule:
+    - cron: 0 4 * * *
   watch:
     types: started
 
@@ -27,7 +27,7 @@ env:
   REPO_BRANCH: openwrt-19.07
   CONFIG_FILE: .config
   DIY_SH: diy.sh
-  SSH_ACTIONS: true
+  SSH_ACTIONS: false
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
@@ -114,7 +114,7 @@ jobs:
       uses: actions/upload-artifact@master
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
-        name: OpenWrt_firmware
+        name: 小米R3G1907固件
         path: ${{ env.FIRMWARE }}
 
     - name: Upload firmware to cowtransfer
